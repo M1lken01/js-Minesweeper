@@ -1,8 +1,8 @@
-const maxRows = 30;
-const maxCols = 30;
-var rows = 20;
-var cols = 20;
-var bombs = 50;
+const maxRows = 60;
+const maxCols = 60;
+var rows = 30;
+var cols = 40;
+var bombs = 150;
 var fields = rows * cols
 const maxBombs = fields;
 const flagIcon = '&#128681';

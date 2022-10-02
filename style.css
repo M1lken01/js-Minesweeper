@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 :root {
     --clr0: rgb(167, 167, 167);
     --clr1: rgb(17, 41, 255);
@@ -25,7 +26,9 @@ html {
 
 table,
 td {
-    border: var(--clrDark) 2px solid;
+    font-size: 1.2rem;
+    font-family: 'Alfa Slab One', cursive;
+    border: var(--clrDark) 1px solid;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +39,7 @@ td {
 
 td {
     color: var(--clrLight);
-    padding: 10px;
+    background-color: var(--clr0);
     width: 25px;
     height: 25px;
 }
@@ -46,52 +49,53 @@ td:hover {
 }
 
 .bomb {
-    background-color: var(--clrBomb);
+    color: var(--clrBomb);
 }
 
 .cell0 {
-    background-color: var(--clr0);
-    color: var(--clrDark);
+    color: var(--clr0);
 }
 
 .cell1 {
-    background-color: var(--clr1);
+    color: var(--clr1);
 }
 
 .cell2 {
-    background-color: var(--clr2);
+    color: var(--clr2);
 }
 
 .cell3 {
-    background-color: var(--clr3);
+    color: var(--clr3);
 }
 
 .cell4 {
-    background-color: var(--clr4);
+    color: var(--clr4);
 }
 
 .cell5 {
-    background-color: var(--clr5);
+    color: var(--clr5);
 }
 
 .cell6 {
-    background-color: var(--clr6);
+    color: var(--clr6);
 }
 
 .cell7 {
-    background-color: var(--clr7);
+    color: var(--clr7);
 }
 
 .cell8 {
-    background-color: var(--clr8);
-    color: var(--clrDark);
+    color: var(--clr8);
 }
 
 .hidden {
     background-color: var(--clrLight);
     color: var(--clrDark);
+    box-shadow: 0px 0px 5px 2px rgba(167, 167, 167, 0.75) inset;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(167, 167, 167, 0.75) inset;
+    -moz-box-shadow: 0px 0px 5px 2px rgba(167, 167, 167, 0.75) inset;
 }
 
 .flagged {
-    background-color: var(--clrFlag);
+    color: var(--clrFlag);
 }
