@@ -1,0 +1,97 @@
+:root {
+    --clr0: rgb(167, 167, 167);
+    --clr1: rgb(17, 41, 255);
+    --clr2: rgb(20, 117, 8);
+    --clr3: rgb(255, 84, 17);
+    --clr4: rgb(2, 0, 150);
+    --clr5: rgb(194, 10, 10);
+    --clr6: rgb(13, 109, 4);
+    --clr7: rgb(7, 16, 151);
+    --clr8: rgb(217, 221, 0);
+    --clrBomb: rgb(0, 0, 0);
+    --clrFlag: rgb(185, 0, 0);
+    --clrDark: rgb(26, 26, 26);
+    --clrLight: rgb(219, 219, 219);
+}
+
+html {
+    background-color: var(--clrLight);
+    color: var(--clrDark);
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: auto;
+}
+
+table,
+td {
+    border: var(--clrDark) 2px solid;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+td {
+    color: var(--clrLight);
+    padding: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+td:hover {
+    cursor: pointer;
+}
+
+.bomb {
+    background-color: var(--clrBomb);
+}
+
+.cell0 {
+    background-color: var(--clr0);
+    color: var(--clrDark);
+}
+
+.cell1 {
+    background-color: var(--clr1);
+}
+
+.cell2 {
+    background-color: var(--clr2);
+}
+
+.cell3 {
+    background-color: var(--clr3);
+}
+
+.cell4 {
+    background-color: var(--clr4);
+}
+
+.cell5 {
+    background-color: var(--clr5);
+}
+
+.cell6 {
+    background-color: var(--clr6);
+}
+
+.cell7 {
+    background-color: var(--clr7);
+}
+
+.cell8 {
+    background-color: var(--clr8);
+    color: var(--clrDark);
+}
+
+.hidden {
+    background-color: var(--clrLight);
+    color: var(--clrDark);
+}
+
+.flagged {
+    background-color: var(--clrFlag);
+}
