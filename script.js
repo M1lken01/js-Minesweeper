@@ -9,8 +9,9 @@ const flagIcon = '&#128681';
 const bombIcon = '&#128163';
 const hiddenIcon = ' ';
 
-var clearIds = []
-var bombIds = []
+var game = 0;
+var clearIds = [];
+var bombIds = [];
 var placedBombs = 0;
 var placedFlags = 0;
 
@@ -24,10 +25,9 @@ document.addEventListener("contextmenu", function(e) {
 }, false);
 
 function sweep(id) {
-    if (document.getElementById(id).classList.contains('hidden') && !document.getElementById(id).classList.contains('flagged')) {
+    if (document.getElementById(id).classList.contains('hidden') && !document.getElementById(id).classList.contains('flagged') && game == 0) {
         if (bombIds.includes(id)) {
-            console.log('bomb')
-            document.getElementById(id).innerHTML = bombIcon;
+            lose();
         } else {
             var bombCount = parseInt(document.getElementById(id).classList[1].split('cell')[1]);
             document.getElementById(id).innerHTML = bombCount;
@@ -141,11 +141,33 @@ function winCheck() {
         }
     }
     if (points == placedBombs) {
-        console.log('congrats');
+        game = 1;
+        document.getElementById('bombsleft').innerHTML = 'Won. ' + document.getElementById('bombsleft').innerHTML;
     }
 }
 
-//          debug/dev
+function lose() {
+    game = -1;
+    document.getElementById('bombsleft').innerHTML = 'Lost. ' + document.getElementById('bombsleft').innerHTML;
+    for (let i = 0; 0 < document.getElementsByClassName('bomb').length; i++) {
+        var current = document.getElementsByClassName('bomb')[i];
+        current.classList.remove('hidden');
+        if (current.classList.contains('flagged')) {
+            current.classList.remove('flagged');
+        }
+        if (bombIds.includes(current.id)) {
+            current.innerHTML = bombIcon;
+        } else {
+            current.innerHTML = parseInt(current.classList[0].split('cell')[1]);
+        }
+    }
+}
+
+
+
+//          ---------dev---------
+
+
 
 function showAll() {
     while (0 < document.getElementsByClassName('hidden').length) {
@@ -160,6 +182,17 @@ function showAll() {
             current.innerHTML = parseInt(current.classList[0].split('cell')[1]);
         }
     }
+}
+
+function autoSolve() {
+    for (let i = 0; i < placedBombs; i++) {
+        if (!document.getElementsByClassName('bomb')[i].classList.contains('flagged')) {
+            document.getElementsByClassName('bomb')[i].classList.add('flagged');
+            document.getElementsByClassName('bomb')[i].innerHTML = flagIcon;
+            placedFlags += 1;
+        }
+    }
+    winCheck();
 }
 
 function startHelp() {
