@@ -51,6 +51,7 @@ function flag(id) {
             document.getElementById(id).innerHTML = hiddenIcon;
             placedFlags -= 1;
         }
+        document.getElementById('bombsleft').innerHTML = 'Bombs left: ' + (placedBombs - placedFlags)
     }
 }
 
@@ -102,7 +103,6 @@ function setField() {
         tr.id = "r" + String(i);
         document.getElementById('field').appendChild(tr);
         for (let j = 0; j < cols; j++) {
-            var isBomb = Math.floor(Math.random() * fields);
             const td = document.createElement("td");
             td.innerHTML = hiddenIcon;
             td.id = String(i) + '.' + String(j);
@@ -110,14 +110,17 @@ function setField() {
             td.onclick = function() {
                 sweep(String(i) + '.' + String(j));
             };
-            if (isBomb <= bombs && placedBombs < bombs) {
-                placedBombs += 1;
-                bombIds.push(String(i) + '.' + String(j));
-                td.classList.add('bomb');
-            }
             document.getElementById(tr.id).appendChild(td);
         }
     }
+    while (bombIds.length < bombs) {
+        var id = String(Math.floor(Math.random() * rows)) + '.' + String(Math.floor(Math.random() * cols));
+        if (!bombIds.includes(id)) {
+            bombIds.push(id);
+            document.getElementById(id).classList.add('bomb');
+        }
+    }
+    placedBombs = bombIds.length;
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             var id = String(i) + '.' + String(j);
@@ -127,6 +130,7 @@ function setField() {
             }
         }
     }
+    document.getElementById('bombsleft').innerHTML = 'Bombs left: ' + (placedBombs - placedFlags)
 }
 
 function winCheck() {
