@@ -17,12 +17,21 @@ var placedFlags = 0;
 
 document.addEventListener("contextmenu", function(e) {
     if (e.originalTarget.localName == 'td') {
+        e.preventDefault();
         if (e.target.attributes.class.value.includes('hidden')) {
-            e.preventDefault();
             flag(e.target.attributes.id.value);
         }
     }
 }, false);
+
+function setCell(id, to, name, add = true) {
+    document.getElementById(id).innerHTML = name;
+    if (add) {
+        document.getElementById(id).classList.add(to);
+    } else {
+        document.getElementById(id).classList.remove(to);
+    }
+}
 
 function sweep(id) {
     if (document.getElementById(id).classList.contains('hidden') && !document.getElementById(id).classList.contains('flagged') && game == 0) {
@@ -34,24 +43,27 @@ function sweep(id) {
             if (bombCount == 0) {
                 checkEmpty(id);
             }
+            document.getElementById(id).classList.remove('hidden');
         }
-        document.getElementById(id).classList.remove('hidden');
         console.log(id)
     }
 }
 
 function flag(id) {
-    if (document.getElementById(id).classList.contains('hidden')) {
+    if (document.getElementById(id).classList.contains('hidden') && game == 0) {
         if (!document.getElementById(id).classList.contains('flagged') && placedFlags < placedBombs) {
             document.getElementById(id).classList.add('flagged');
             document.getElementById(id).innerHTML = flagIcon;
             placedFlags += 1;
+            if (placedFlags == placedBombs) {
+                winCheck();
+            }
         } else if (document.getElementById(id).classList.contains('flagged') && placedFlags <= placedBombs) {
             document.getElementById(id).classList.remove('flagged');
             document.getElementById(id).innerHTML = hiddenIcon;
             placedFlags -= 1;
         }
-        document.getElementById('bombsleft').innerHTML = 'Bombs left: ' + (placedBombs - placedFlags)
+        document.getElementById('bombsleft').innerHTML = document.getElementById('bombsleft').innerHTML.split(': ')[0] + ': ' + (placedBombs - placedFlags)
     }
 }
 
@@ -98,6 +110,16 @@ function checkEmpty(id) {
 }
 
 function setField() {
+    document.getElementById('field').innerHTML = '';
+    cols = document.getElementById('cols').value;
+    rows = document.getElementById('rows').value;
+    bombs = document.getElementById('bombs').value;
+    fields = rows * cols
+    game = 0;
+    clearIds = [];
+    bombIds = [];
+    placedBombs = 0;
+    placedFlags = 0;
     for (let i = 0; i < rows; i++) {
         const tr = document.createElement("tr");
         tr.id = "r" + String(i);

@@ -3,16 +3,17 @@
     --clr0: rgb(167, 167, 167);
     --clr1: rgb(17, 41, 255);
     --clr2: rgb(20, 117, 8);
-    --clr3: rgb(255, 84, 17);
-    --clr4: rgb(2, 0, 150);
-    --clr5: rgb(194, 10, 10);
-    --clr6: rgb(13, 109, 4);
-    --clr7: rgb(7, 16, 151);
-    --clr8: rgb(217, 221, 0);
+    --clr3: rgb(255, 25, 17);
+    --clr4: rgb(2, 0, 100);
+    --clr5: rgb(119, 5, 5);
+    --clr6: rgb(15, 119, 114);
+    --clr7: rgb(143, 7, 161);
+    --clr8: rgb(94, 94, 94);
     --clrBomb: rgb(0, 0, 0);
     --clrFlag: rgb(185, 0, 0);
     --clrDark: rgb(26, 26, 26);
     --clrLight: rgb(219, 219, 219);
+    --clrAlpha: rgba(0, 0, 0, 0);
 }
 
 html {
@@ -25,9 +26,52 @@ html {
 }
 
 table {
-    box-shadow: 0px 0px 30px 20px rgba(41, 41, 41, 0.75);
-    -webkit-box-shadow: 0px 0px 30px 20px rgba(41, 41, 41, 0.75);
-    -moz-box-shadow: 0px 0px 30px 20px rgba(41, 41, 41, 0.75);
+    box-shadow: 0px 0px 20px 5px rgba(41, 41, 41, 0.75);
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(41, 41, 41, 0.75);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(41, 41, 41, 0.75);
+}
+
+label,
+input {
+    font-family: inherit;
+    font-size: 1.2rem;
+}
+
+input,
+button {
+    text-align: center;
+    width: 60px;
+    padding: 2px;
+    margin-top: 10px;
+    background-color: var(--clrAlpha);
+    border-style: none;
+    border-bottom: var(--clrDark) solid 1px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
+input:hover,
+button:hover {
+    cursor: pointer;
+    width: 70px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 table,
